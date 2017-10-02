@@ -10,6 +10,8 @@ class Blockchain(object):
 
         self._create_genesis_block()
 
+    def chain(self):
+        return self._chain
 
     def _create_genesis_block(self):
         """
@@ -35,7 +37,7 @@ class Blockchain(object):
 
         return self.last_block['index'] + 1
 
-    def _new_block(self, proof, previous_hash = None):
+    def new_block(self, proof, previous_hash = None):
         """
         Creates a new block in the Blockchain
         :param proof: <int> The output of the ProofOfWork algorithm
@@ -57,7 +59,7 @@ class Blockchain(object):
         self._chain.append(block)
         return block
 
-    def _proof_of_work(self, previous_proof):
+    def proof_of_work(self, previous_proof):
         """
         Simple implementation of the Proof Of Work algorithm:
         - Find a number p' such that hash(pp') contains leading 4 zeros
